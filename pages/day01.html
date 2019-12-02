@@ -1,0 +1,37 @@
+<html>
+    <head><script
+        src="https://code.jquery.com/jquery-3.4.1.slim.js"
+        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+        crossorigin="anonymous"></script>
+        <script src="../scripts/AoC01.js"></script>
+        <script>
+            var caluculate = function(value){
+                console.log('Done');
+                var values = $('#input').val().split(',');
+                var result = 0;
+                var includeFuel = $('input[name=fuel]:checked').val()==='true';
+                values.forEach(function(item){
+                    result+=calculateFuelNeeds(item,includeFuel);
+                });
+                $('#answer').text(result);
+            };
+        </script>
+    </head>
+    <body>
+        <a href="../index.html">Back</a>
+        <p>Please enter a comma separated list of values:</p>
+        <textarea id="input">87819,115026,134815,137411,67764,99126,73336,66216,81346,94695,76336,148938,100089,67341,101811,83239,58537,146622,140006,95115,87728,51664,93463,127521,62195,135326,104650,121170,142794,125892,112521,81326,110930,125273,70131,52291,116316,50670,82145,89869,55474,146525,67064,118129,74723,111269,128051,131256,145221,71059,137530,94041,92331,134280,133517,59611,113590,96394,64731,53491,83163,56863,51928,126075,92833,106741,94873,97241,105203,147315,108651,67542,111622,83522,125500,149284,70747,78945,125322,141425,111995,66892,131105,86896,87588,140571,116504,76218,146224,127819,59032,102767,137517,126448,141218,102267,78692,96306,56531,80841</textarea>
+        <div>
+                <input type="radio" id="fuelIgnore" name="fuel" value="false"
+                       checked>
+                <label for="fuelIgnore">Ignore fuel weight</label>
+              </div>
+              
+              <div>
+                <input type="radio" id="fuelInclude" name="fuel" value="true">
+                <label for="fuelInclude">Include fuel weight</label>
+              </div>
+        <button onclick="caluculate()">Calculate</button>
+        <p>Answer: <span id="answer">&lt;Click calculate&gt;</span></p>
+    </body>
+</html>

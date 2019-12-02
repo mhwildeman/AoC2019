@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script src="../scripts/AoC02.js"></script>
+    <script>
+        var calculate = function () {
+            var noun = parseInt($('#noun').val());
+            var verb = parseInt($('#verb').val());
+            var result = runProgram(noun, verb);
+            $('#answer').val(result);
+            console.log(result);
+        };
+
+        var findValue = function () {
+            var found = false;
+            var answer = parseInt($('#answer').val());
+            for (var noun = 0; noun < 100; noun++) {
+                for (var verb = 0; verb < 100; verb++) {
+                    if (runProgram(noun, verb) === answer) {
+                        $('#noun').val(noun);
+                        $('#verb').val(verb);
+                        console.log(100 * noun + verb);
+                        found = true;
+                    }
+                }
+            }
+            if (!found) {
+                $('#noun').val('');
+                $('#verb').val('');
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <a href="../index.html">Back</a>
+    <p>Please enter a comma separated list of values:</p>
+    <input type="text" id="noun" value="12">
+    <label for="noun">Noun</label><br>
+    <input type="text" id="verb" value="2">
+    <label for="verb">Verb</label><br>
+
+    <button onclick="calculate()">Calculate value</button>
+    <p>Answer: <input type="text" id="answer" value="19690720"></p>
+    <button onclick="findValue()">Find verb and noun</button>
+</body>
+
+</html>
